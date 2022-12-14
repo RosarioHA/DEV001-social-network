@@ -1,7 +1,13 @@
-import { crearUSyPass } from '../src/components/Register.js';
+/**
+ * @jest-environment jsdom
+ */
 
-describe('crearUSyPass', () => {
-  it('debería ser una función', () => {
-    expect(typeof crearUSyPass).toBe('function');
+import { Register } from '../src/components/Register.js';
+
+jest.mock('../src/main.js');
+
+describe('Test de registro', () => {
+  test('el componente es una funcion', () => {
+    expect(typeof Register).toBe('function');
   });
 });

@@ -43,7 +43,7 @@ export const Login = (onNavigate) => {
       const credentials = await signInWithPopup(auth, provider);
       onNavigate('/wall');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   });
 
@@ -57,6 +57,7 @@ export const Login = (onNavigate) => {
     signUp(userMail, userPass, onNavigate);
     // const auth = getAuth();
   });
-  loginDiv.append(textoLogin, loginMail, loginPass, errorLogin, buttonLogin, buttonGoogle, buttonHome, registerLink);
+  loginDiv.append(textoLogin, loginMail, loginPass, errorLogin);
+  loginDiv.append(buttonLogin, buttonGoogle, buttonHome, registerLink);
   return loginDiv;
 };
