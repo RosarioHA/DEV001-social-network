@@ -6,7 +6,7 @@ import { Register } from '../src/components/Register';
 jest.mock('../src/main.js');
 jest.mock('../src/lib/Imports.js');
 
-// TEST Register - deberia tener un mock porque no queremos realmente crear usuarios al testear
+// TEST Register
 describe('Register', () => {
   it('debería ser una función', () => {
     expect(typeof Register).toBe('function');
