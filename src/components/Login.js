@@ -57,7 +57,15 @@ export const Login = (onNavigate) => {
     signUp(userMail, userPass, onNavigate);
     // const auth = getAuth();
   });
-  loginDiv.append(textoLogin, loginMail, loginPass, errorLogin);
-  loginDiv.append(buttonLogin, buttonGoogle, buttonHome, registerLink);
+  loginDiv.append(
+    textoLogin,
+    loginMail,
+    loginPass,
+    errorLogin,
+    buttonLogin,
+    buttonGoogle,
+    buttonHome,
+    registerLink,
+  );
   return loginDiv;
 };
