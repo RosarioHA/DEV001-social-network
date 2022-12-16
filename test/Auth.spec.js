@@ -1,33 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-import { Register } from '../src/components/Register';
+import { signInGoogle } from '../src/lib/Auth.js';
 
-jest.mock('../src/main.js');
-jest.mock('../src/lib/Imports.js');
+jest.mock('firebase/auth');
 
-// TEST Register
-describe('Register', () => {
-  it('debería ser una función', () => {
-    expect(typeof Register).toBe('function');
-  });
-  test('existe el botón de crear', () => {
-    const element = Register();
-    const button = element.querySelector('.register');
-    expect(button).toBeNull();
+describe('signInGoogle()', () => {
+  it('debe ejecutar el método signInWithPopup', async () => {
+    const callback = jest.fn();
+    await signInGoogle(callback);
+    expect(callback).toHaveBeenCalled();
   });
 });
-
-// // TEST createUser - deberia tener un mock porque no queremos realmente crear usuarios al testear
-// describe('createUser', () => {
-//   it('debería ser una función', () => {
-//     expect(typeof createUser).toBe('function');
-//   });
-// });
-
-// // TEST signUp - idem
-// describe('signUp', () => {
-//   it('debería ser una función', () => {
-//     expect(typeof signUp).toBe('function');
-//   });
-// });

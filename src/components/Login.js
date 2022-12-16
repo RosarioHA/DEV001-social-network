@@ -36,7 +36,7 @@ export const Login = (onNavigate) => {
   });
 
   buttonGoogle.addEventListener('click', () => {
-    signInGoogle();
+    signInGoogle(onNavigate);
   });
 
   buttonHome.addEventListener('click', () => {

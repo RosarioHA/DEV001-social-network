@@ -24,7 +24,7 @@ export const createUser = (userMail, userPass, onNavigate) => {
   createUserWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
       console.log('bieen');
-    // Signed in
+      // Signed in
       const user = userCredential.user;
       onNavigate('/wall');
       console.log('welcome ', user);
@@ -44,12 +44,12 @@ export const createUser = (userMail, userPass, onNavigate) => {
     });
 };
 
-// INGRESAR CON USUARIO EXISTENTE
+// INGRESAR CON USUARIO EXISTENTE - también es promesa-asincrona? parece que si
 export const signUp = (userMail, userPass, onNavigate) => {
   signInWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
       onNavigate('/wall');
-    // Signed in
+      // Signed in
       // const user = userCredential.user;
       console.log(userCredential);
     })
@@ -70,7 +70,7 @@ export const signUp = (userMail, userPass, onNavigate) => {
 export const signInGoogle = async (onNavigate) => {
   try {
     const credentials = await signInWithPopup(auth, provider);
-    console.log(credentials);
+    console.log('el tipo de dato es', typeof signInGoogle);
     onNavigate('/wall');
   } catch (error) {
     console.log(error);
@@ -78,6 +78,6 @@ export const signInGoogle = async (onNavigate) => {
 };
 
 // FUNCIÓN DE SIGNOUT
-export const logOut = async (onNavigate) => {
+export const logOut = async () => {
   await signOut(auth);
 };
