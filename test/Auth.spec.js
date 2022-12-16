@@ -1,10 +1,16 @@
 /**
  * @jest-environment jsdom
  */
+import { signOut } from 'firebase/auth';
 import { signUp, signInGoogle, logOut } from '../src/lib/Auth.js';
 
 jest.mock('firebase/auth');
+jest.mock('firebase/firestore');
 
+// TEST PROVIDER Y AUTH ?
+// TEST CREATEUSER
+
+// TEST SIGNUP
 describe('signUp()', () => {
   it('debe ejecutar el método signInWithEmailAndPassword', async () => {
     const testMail = ('falsomail@no.com');
@@ -17,7 +23,7 @@ describe('signUp()', () => {
   });
 });
 
-// éste es el unico que corre bien
+// check
 describe('signInGoogle()', () => {
   it('debe ejecutar el método signInWithPopup', async () => {
     const callback = jest.fn();
@@ -25,11 +31,10 @@ describe('signInGoogle()', () => {
     expect(callback).toHaveBeenCalled();
   });
 });
-
+// check
 describe('logOut()', () => {
   it('debe ejecutar el método signOut', async () => {
-    const callback = jest.fn();
-    await logOut(callback);
-    expect(callback).toHaveBeenCalled();
+    await logOut();
+    expect(signOut).toHaveBeenCalled();
   });
 });
