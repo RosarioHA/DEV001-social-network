@@ -1,19 +1,18 @@
 /**
  * @jest-environment jsdom
  */
-import { signOut } from 'firebase/auth';
 import { signUp, signInGoogle, logOut } from '../src/lib/Auth.js';
 
 jest.mock('firebase/auth');
 
 describe('signUp()', () => {
   it('debe ejecutar el método signInWithEmailAndPassword', async () => {
-    const testMail = jest.fn();
-    const testPass = jest.fn();
+    const testMail = ('falsomail@no.com');
+    const testPass = ('123');
     const callback = jest.fn();
     await signUp(testMail, testPass, callback);
-    expect(testMail).toHaveBeenCalled();
-    expect(testPass).toHaveBeenCalled();
+    expect(testMail).toBe('falsomail@no.com');
+    expect(testPass).toBe('123');
     expect(callback).toHaveBeenCalled();
   });
 });

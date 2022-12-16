@@ -7,15 +7,6 @@ import { app } from './Firebase.js';
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 
-// onAuthStateChanged(auth, (usuario) => {
-//   if (usuario) {
-//     onNavigate('/wall');
-//     // const uid = usuario.uid;
-//   } else {
-//     onNavigate('/login');
-//   }
-// });
-
 // Inicia el autentificador con google
 export const provider = new GoogleAuthProvider();
 
@@ -45,25 +36,25 @@ export const createUser = (userMail, userPass, onNavigate) => {
 };
 
 // INGRESAR CON USUARIO EXISTENTE - también es promesa-asincrona? parece que si
-export const signUp = (userMail, userPass, onNavigate) => {
-  signInWithEmailAndPassword(auth, userMail, userPass)
-    .then((userCredential) => {
+export const signUp = async (userMail, userPass, onNavigate) => {
+  try {
+    await signInWithEmailAndPassword(auth, userMail, userPass)((userCredential) => {
       onNavigate('/wall');
       // Signed in
       // const user = userCredential.user;
       console.log(userCredential);
-    })
-    .catch((error) => {
-      if (error.code === 'auth/email-already-in-use') {
-        document.getElementById('errorLogin').innerHTML = 'Este correo ya está registrado';
-      } else if (error.code === 'auth/invalid-email') {
-        document.getElementById('errorLogin').innerHTML = 'El correo que ingresaste es inválido';
-      } else if (error.code === 'auth/weak-password') {
-        document.getElementById('errorLogin').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
-      } else if (error.code) {
-        document.getElementById('errorLogin').innerHTML = 'Revisa los datos ingresados, algo no está bien';
-      }
     });
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      document.getElementById('errorLogin').innerHTML = 'Este correo ya está registrado';
+    } else if (error.code === 'auth/invalid-email') {
+      document.getElementById('errorLogin').innerHTML = 'El correo que ingresaste es inválido';
+    } else if (error.code === 'auth/weak-password') {
+      document.getElementById('errorLogin').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
+    } else if (error.code) {
+      document.getElementById('errorLogin').innerHTML = 'Revisa los datos ingresados, algo no está bien';
+    }
+  }
 };
 
 // INGRESAR CON GOOGLE
