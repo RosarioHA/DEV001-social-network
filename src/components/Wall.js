@@ -15,6 +15,9 @@ export const Wall = (onNavigate) => {
   const menu = document.createElement('div');
   menu.className = 'menuWall';
 
+  const comentArea = document.createElement('form');
+  comentArea.id = 'comentArea';
+
   const comentImput = document.createElement('textarea');
   comentImput.className = 'comentImput';
   comentImput.rows = '7';
@@ -26,7 +29,8 @@ export const Wall = (onNavigate) => {
   const comentSpace = document.createElement('div');
   comentSpace.className = 'comentSpace';
 
-  wallDiv.append(menu, comentImput, buttonComent, comentSpace);
+  wallDiv.append(menu, comentArea, comentSpace);
+  comentArea.append(comentImput, buttonComent);
   menu.append(buttonLogout);
 
   return wallDiv;
