@@ -20,6 +20,7 @@ export const Wall = (onNavigate) => {
 
   const comentImput = document.createElement('textarea');
   comentImput.className = 'comentImput';
+  comentImput.id = 'comentImput';
   comentImput.rows = '7';
 
   const buttonComent = document.createElement('button');
