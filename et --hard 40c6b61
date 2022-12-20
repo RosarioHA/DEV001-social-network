@@ -1,0 +1,40 @@
+[33m7baabb2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m ajuste css
+[33m40c6b61[m[33m ([m[1;32mcommit[m[33m)[m dar estilo a wall
+[33md814b15[m[33m ([m[1;32mPruebas-wall[m[33m)[m segundo test ok
+[33m4358b8c[m test signOut un poco mejor
+[33m5c24a01[m segundo y tercer test que no corren
+[33m2f1953d[m primer test ok
+[33m367c2be[m funciones aisladas, correcciones en CSS
+[33m384cf9c[m[33m ([m[1;31morigin/test[m[33m, [m[1;32mtest[m[33m)[m funciones aisladas, css ajustado
+[33m5872498[m primeros test
+[33mc971822[m crear primeros archivos para test
+[33mb881361[m soluciona ruta botón login en login
+[33me961b76[m soluciona ruta botón login en register
+[33mb52d02a[m Aislar funciones en carpeta Auth
+[33m3ff9b1b[m cambiar textos en register
+[33m540f207[m transformar alertas en texto, dar estilo, responsive
+[33m0ade939[m Comenzando con los test
+[33m7c86979[m agregar primeros estilos
+[33m493302f[m hacer autentificación
+[33m69cc257[m agregar alertas de error
+[33m70089c6[m agregar registro con cuenta de google
+[33mdc84d3c[m implementar firebase para registro y login
+[33m4dc15c4[m formularios de registro creados
+[33m5d948b3[m rutas SPA funcionando ok
+[33meed7cf6[m pruebas firebase
+[33m5207838[m comenzando con firebase
+[33md5f1fae[m problema npm solucionado
+[33m7bb429b[m agregar rutas
+[33m3ac7a9f[m APS funcionando, rutas pendientes
+[33m63cf186[m avances lunes 28 pm
+[33m6fd39b4[m resolviendo problema de ruta
+[33m018e0a7[m Revert "creando components"
+[33mb6e05d6[m agregar router
+[33m6388ea3[m comenzando a armar SPA
+[33m5de3ab3[m creando components
+[33m718283a[m Merge pull request #3 from Laboratoria/add_start_script
+[33m1f0a2f1[m update package.json con dev
+[33m31cc55c[m Merge pull request #1 from Laboratoria/unjust-patch-1
+[33m9dd1e59[m servicio de hosting urls
+[33mdfc80ca[m Update README.md
+[33m9571d26[m chore(init): Adds project files from curriculum
