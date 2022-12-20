@@ -1,7 +1,10 @@
 import {
-  signInWithEmailAndPassword, signInWithPopup, signOut,
-} from 'firebase/auth'; // también deberían estar en Imports.js?
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider } from './Imports.js';
+  createUserWithEmailAndPassword,
+  getAuth, GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from './Imports.js';
 import { app } from './Firebase.js';
 
 // Initialize Firebase Authentication and get a reference to the service
@@ -35,7 +38,7 @@ export const createUser = (userMail, userPass, onNavigate) => {
     });
 };
 
-// INGRESAR CON USUARIO EXISTENTE - también es promesa-asincrona? parece que si
+// INGRESAR CON USUARIO EXISTENTE
 export const signUp = (userMail, userPass, onNavigate) => {
   signInWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
@@ -44,7 +47,6 @@ export const signUp = (userMail, userPass, onNavigate) => {
       // const user = userCredential.user;
       console.log(userCredential);
     })
-
     .catch((error) => {
       if (error.code === 'auth/email-already-in-use') {
         document.getElementById('errorLogin').innerHTML = 'Este correo ya está registrado';
@@ -69,7 +71,7 @@ export const signInGoogle = async (onNavigate) => {
   }
 };
 
-// FUNCIÓN DE SIGNOUT
+// FUNCIÓN DE SIGNOUT - check
 export const logOut = async () => {
   await signOut(auth);
 };

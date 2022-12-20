@@ -1,13 +1,21 @@
 /**
  * @jest-environment jsdom
  */
-import { signOut } from 'firebase/auth';
-import { signUp, signInGoogle, logOut } from '../src/lib/Auth.js';
+import { getAuth, signOut } from 'firebase/auth';
+import {
+  signUp, signInGoogle, logOut, auth,
+} from '../src/lib/Auth.js';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
 
 // TEST PROVIDER Y AUTH ?
+describe('auth()', () => {
+  it('debe ejecutar el método getAuth', () => {
+    auth();
+    expect(getAuth).toHaveBeenCalled();
+  });
+});
 // TEST CREATEUSER
 
 // TEST SIGNUP

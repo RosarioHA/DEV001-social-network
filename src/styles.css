@@ -59,11 +59,23 @@ button {
   border-radius: 10px;
   margin-bottom: 15px;
 }
+.buttonComent {
+  width: 150px;
+  margin-top: 30px;
+}
+.buttonLogout {
+  width: 100px;
+}
 input{
   width: 200px;
   height: 30px;
   margin-bottom: 15px;
   padding-left: 5px; 
+}
+.comentImput{
+  background-color: #ECE4E4;
+  border: none;
+  width: 70%;
 }
 .wall{
   margin: 0px;
@@ -78,6 +90,7 @@ input{
   padding: 100px;
   position: fixed;
 }
+
 .menuWall {
   display: flex;
   justify-content:space-evenly;
@@ -105,10 +118,17 @@ button {
   border: 0px;
   margin-bottom: 15px;
 }
+#btnLogout {
+  width: 150px;
+  margin-right: 30px;
+}
 input{
   width: 350px;
   height: 20px;
   margin-bottom: 15px; 
+}
+.comentImput {
+  max-width: 500px;
 }
 h1{
   max-width: 400px;
@@ -116,5 +136,11 @@ h1{
 h2{
   margin-bottom: 40px;
   max-width: 400px;
+}
+.menuWall {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  justify-content: flex-end;
 }
 };
