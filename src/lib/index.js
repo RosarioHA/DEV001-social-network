@@ -1,4 +1,6 @@
-import { saveComent, getComent, onGetComents } from './Firebase.js';
+import {
+  saveComent, getComent, onGetComents, deleteComent,
+} from './Firebase.js';
 
 const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
@@ -11,11 +13,19 @@ window.addEventListener('DOMContentLoaded', async () => {
       const coment = doc.data();
       html += `
         <div>
-         <p>${coment.coment}
+         <p>${coment.coment}</p>
+         <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
         </div>
     `;
     });
     comentSpace.innerHTML = html;
+
+    const btnsDelete = comentSpace.querySelectorAll('.btnDelete');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deleteComent(dataset.id);
+      });
+    });
   });
 });
 

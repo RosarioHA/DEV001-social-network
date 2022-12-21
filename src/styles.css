@@ -66,13 +66,16 @@ button {
 .buttonLogout {
   width: 100px;
 }
+.btnDelete{
+  width: 60px;
+}
 input{
   width: 200px;
   height: 30px;
   margin-bottom: 15px;
   padding-left: 5px; 
 }
-.comentImput{
+#comentImput{
   background-color: #ECE4E4;
   border: none;
   width: 70%;
