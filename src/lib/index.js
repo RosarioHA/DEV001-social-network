@@ -1,5 +1,6 @@
+import { async } from 'regenerator-runtime';
 import {
-  saveComent, getComent, onGetComents, deleteComent,
+  saveComent, getComent, onGetComents, deleteComent, getPost
 } from './Firebase.js';
 
 const comentArea = document.getElementById('comentArea');
@@ -14,6 +15,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       html += `
         <div>
          <p>${coment.coment}</p>
+         <button class='btnEdit' data-id="${doc.id}"> Editar </button>
          <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
         </div>
     `;
@@ -24,6 +26,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         deleteComent(dataset.id);
+      });
+    });
+
+    const btnsEdit = comentSpace.querySelectorAll('.btnEdit');
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener('click', async ({ target: { dataset } }) => {
+        const doc = await getPost(dataset.id);
+        const post = doc.data();
+        comentArea.comentImput.value = post.coment;
       });
     });
   });

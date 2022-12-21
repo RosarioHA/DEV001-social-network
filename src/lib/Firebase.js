@@ -4,6 +4,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   deleteDoc,
   doc,
   onSnapshot,
@@ -39,3 +40,5 @@ export const getComent = () => getDocs(collection(db, 'coments'));
 export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), callback);
 
 export const deleteComent = (id) => deleteDoc(doc(db, 'coments', id));
+
+export const getPost = (id) => getDoc(doc(db, 'coments', id));

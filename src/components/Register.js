@@ -7,6 +7,9 @@ export const Register = (onNavigate) => {
   const textoRegister = document.createElement('h2');
   textoRegister.textContent = 'Puedes registrarte en Semillero usando tu correo electrónico. Tu clave debe tener un mínimo de seis dígitos:';
 
+  const registerName = document.createElement('input');
+  registerName.placeholder = 'agrega tu nombre de usuario';
+
   const registerMail = document.createElement('input');
   registerMail.placeholder = 'ingresa tu correo';
   registerMail.type = 'email';
@@ -31,9 +34,18 @@ export const Register = (onNavigate) => {
   buttonSend.addEventListener('click', () => {
     const userMail = registerMail.value;
     const userPass = registerPass.value;
-    createUser(userMail, userPass, onNavigate);
+    const userName = registerName.value;
+    createUser( userMail, userPass, userName, onNavigate);
   });
 
-  homeDiv.append(textoRegister, registerMail, registerPass, errorSpace, buttonSend, buttonHome);
+  homeDiv.append(
+    textoRegister,
+    registerName,
+    registerMail,
+    registerPass,
+    errorSpace,
+    buttonSend,
+    buttonHome,
+  );
   return homeDiv;
 };
