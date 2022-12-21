@@ -19,7 +19,6 @@ export const Wall = (onNavigate) => {
   comentArea.id = 'comentArea';
 
   const comentImput = document.createElement('textarea');
-  comentImput.className = 'comentImput';
   comentImput.id = 'comentImput';
   comentImput.rows = '7';
 
@@ -28,7 +27,7 @@ export const Wall = (onNavigate) => {
   buttonComent.textContent = 'PUBLICAR';
 
   const comentSpace = document.createElement('div');
-  comentSpace.className = 'comentSpace';
+  comentSpace.id = 'comentSpace';
 
   wallDiv.append(menu, comentArea, comentSpace);
   comentArea.append(comentImput, buttonComent);
