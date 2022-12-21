@@ -35,7 +35,7 @@ export const Register = (onNavigate) => {
     const userMail = registerMail.value;
     const userPass = registerPass.value;
     const userName = registerName.value;
-    createUser( userMail, userPass, userName, onNavigate);
+    createUser(userMail, userPass, userName, onNavigate);
   });
 
   homeDiv.append(

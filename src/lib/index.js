@@ -1,10 +1,10 @@
-import { async } from 'regenerator-runtime';
 import {
-  saveComent, getComent, onGetComents, deleteComent, getPost
+  saveComent, getComent, onGetComents, deleteComent, getPost,
 } from './Firebase.js';
 
 const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
+let editStatus = false;
 
 window.addEventListener('DOMContentLoaded', async () => {
   onGetComents((querySnapshot) => {
@@ -35,6 +35,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const doc = await getPost(dataset.id);
         const post = doc.data();
         comentArea.comentImput.value = post.coment;
+
+        editStatus = true;
       });
     });
   });
@@ -45,6 +47,11 @@ comentArea.addEventListener('submit', (event) => {
 
   const coment = comentArea.comentImput;
 
-  saveComent(coment.value);
+  if (editStatus) {
+    console.log('editando...');
+  } else {
+    saveComent(coment.value);
+  }
+
   comentArea.reset();
 });
