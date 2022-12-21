@@ -1,5 +1,11 @@
 // Import the functions you need from the SDKs you need
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  onSnapshot,
+} from 'firebase/firestore';
 import { initializeApp } from './Imports.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -27,3 +33,5 @@ export const saveComent = (coment) => {
 };
 
 export const getComent = () => getDocs(collection(db, 'coments'));
+
+export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), callback);

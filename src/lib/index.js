@@ -1,22 +1,22 @@
-import { saveComent, getComent } from './Firebase.js';
+import { saveComent, getComent, onGetComents } from './Firebase.js';
 
 const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
 
 window.addEventListener('DOMContentLoaded', async () => {
-  const querySnapshot = await getComent();
+  onGetComents((querySnapshot) => {
+    let html = '';
 
-  let html = '';
-
-  querySnapshot.forEach((doc) => {
-    const coment = doc.data();
-    html += `
+    querySnapshot.forEach((doc) => {
+      const coment = doc.data();
+      html += `
         <div>
          <p>${coment.coment}
         </div>
     `;
+    });
+    comentSpace.innerHTML = html;
   });
-  comentSpace.innerHTML = html;
 });
 
 comentArea.addEventListener('submit', (event) => {
