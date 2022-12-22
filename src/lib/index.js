@@ -1,10 +1,11 @@
 import {
-  saveComent, getComent, onGetComents, deleteComent, getPost,
+  saveComent, onGetComents, deleteComent, getPost, UpdatePost,
 } from './Firebase.js';
 
 const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
 let editStatus = false;
+let id = '';
 
 window.addEventListener('DOMContentLoaded', async () => {
   onGetComents((querySnapshot) => {
@@ -37,6 +38,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         comentArea.comentImput.value = post.coment;
 
         editStatus = true;
+        id = doc.id;
       });
     });
   });
@@ -47,10 +49,14 @@ comentArea.addEventListener('submit', (event) => {
 
   const coment = comentArea.comentImput;
 
-  if (editStatus) {
-    console.log('editando...');
-  } else {
+  if (!editStatus) {
     saveComent(coment.value);
+  } else {
+    UpdatePost(id, {
+      coment: coment.value,
+    });
+
+    editStatus = false;
   }
 
   comentArea.reset();

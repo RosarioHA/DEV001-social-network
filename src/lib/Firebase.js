@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  updateDoc,
 } from 'firebase/firestore';
 import { initializeApp } from './Imports.js';
 
@@ -42,3 +43,5 @@ export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), 
 export const deleteComent = (id) => deleteDoc(doc(db, 'coments', id));
 
 export const getPost = (id) => getDoc(doc(db, 'coments', id));
+
+export const UpdatePost = (id, newFields) => updateDoc(doc(db, 'coments', id), newFields);
