@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     querySnapshot.forEach((doc) => {
       const coment = doc.data();
       html += `
-      <li class= 'prueba'>
+      <li class= 'post'>
         <div>
         <p>${coment.userName}</p>
          <h3>${coment.coment}</h3>

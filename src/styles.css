@@ -78,7 +78,7 @@ button {
 .btnEdit{
   width: 60px;
 }
-.prueba{
+.post{
   border: 3px solid green;
   list-style: none;
 }
@@ -95,6 +95,7 @@ input{
 }
 ul{
   border: 3px solid black;
+  height: 10000px;
   padding:0px;
 }
 .wall{
