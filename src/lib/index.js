@@ -1,6 +1,7 @@
 import {
   saveComent, onGetComents, deleteComent, getPost, UpdatePost,
 } from './Firebase.js';
+import { currentUserInfo } from './Auth.js';
 
 const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
@@ -14,11 +15,14 @@ window.addEventListener('DOMContentLoaded', async () => {
     querySnapshot.forEach((doc) => {
       const coment = doc.data();
       html += `
+      <li class= 'prueba'>
         <div>
-         <p>${coment.coment}</p>
+        <p>${coment.userName}</p>
+         <h3>${coment.coment}</h3>
          <button class='btnEdit' data-id="${doc.id}"> Editar </button>
          <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
         </div>
+      </li>  
     `;
     });
     comentSpace.innerHTML = html;
@@ -50,7 +54,7 @@ comentArea.addEventListener('submit', (event) => {
   const coment = comentArea.comentImput;
 
   if (!editStatus) {
-    saveComent(coment.value);
+    saveComent(coment.value, currentUserInfo().displayName);
   } else {
     UpdatePost(id, {
       coment: coment.value,

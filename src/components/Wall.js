@@ -26,7 +26,8 @@ export const Wall = (onNavigate) => {
   buttonComent.className = 'buttonComent';
   buttonComent.textContent = 'PUBLICAR';
 
-  const comentSpace = document.createElement('div');
+
+  const comentSpace = document.createElement('ul');
   comentSpace.id = 'comentSpace';
 
   wallDiv.append(menu, comentArea, comentSpace);

@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from './Imports.js';
 import { app } from './Firebase.js';
 
@@ -14,16 +15,20 @@ export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
 // CREAR USUARIO CON EMAIL
-export const createUser = (userMail, userPass, onNavigate) => {
+export const createUser = (userMail, userPass, userName, onNavigate) => {
   createUserWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
       console.log('bieen');
       // Signed in
       const user = userCredential.user;
       onNavigate('/wall');
-      console.log('welcome ', user);
+      console.log(userCredential);
       // ...
+      updateProfile(getAuth().currentUser, {
+        displayName: userName,
+      });
     })
+
     .catch((error) => {
       console.log(error);
       if (error.code === 'auth/email-already-in-use') {
@@ -75,3 +80,6 @@ export const signInGoogle = async (onNavigate) => {
 export const logOut = async () => {
   await signOut(auth);
 };
+
+// funcion currentuser
+export const currentUserInfo = () => auth.currentUser;

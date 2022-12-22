@@ -47,6 +47,12 @@ h2{
   max-width: 200px;
   margin-bottom: 30px;
 }
+h3{
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  max-width: 270px;
+  margin-bottom: 30px;
+}
 h4{
   text-decoration-line: underline;
 }
@@ -69,6 +75,13 @@ button {
 .btnDelete{
   width: 60px;
 }
+.btnEdit{
+  width: 60px;
+}
+.prueba{
+  border: 3px solid green;
+  list-style: none;
+}
 input{
   width: 200px;
   height: 30px;
@@ -79,6 +92,10 @@ input{
   background-color: #ECE4E4;
   border: none;
   width: 70%;
+}
+ul{
+  border: 3px solid black;
+  padding:0px;
 }
 .wall{
   margin: 0px;
@@ -139,6 +156,9 @@ h1{
 h2{
   margin-bottom: 40px;
   max-width: 400px;
+}
+h3{
+  max-width: 600px;
 }
 .menuWall {
   display: flex;
