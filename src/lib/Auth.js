@@ -1,11 +1,12 @@
 import {
+  getAuth,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  getAuth, GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
-} from './Imports.js';
+} from 'firebase/auth';
 import { app } from './Firebase.js';
 
 // Initialize Firebase Authentication and get a reference to the service

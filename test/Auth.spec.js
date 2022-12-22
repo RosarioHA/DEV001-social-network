@@ -9,7 +9,9 @@ import {
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
 
-// TEST PROVIDER Y AUTH ?
+// TEST PROVIDER
+
+// ERROR: TypeError: (0 , _Auth.auth) is not a function
 describe('auth()', () => {
   it('debe ejecutar el método getAuth', () => {
     auth();
@@ -18,15 +20,13 @@ describe('auth()', () => {
 });
 // TEST CREATEUSER
 
-// TEST SIGNUP
-describe('signUp()', () => {
-  it('debe ejecutar el método signInWithEmailAndPassword', async () => {
-    const testMail = ('falsomail@no.com');
-    const testPass = ('123');
+// check, está usando los mocks?
+describe.only('signUp()', () => {
+  it('debe llamar al callback de ', async () => {
+    const testMail = 'falsomail@no.com';
+    const testPass = '123';
     const callback = jest.fn();
     await signUp(testMail, testPass, callback);
-    expect(testMail).toBe('falsomail@no.com');
-    expect(testPass).toBe('123');
     expect(callback).toHaveBeenCalled();
   });
 });
@@ -39,7 +39,8 @@ describe('signInGoogle()', () => {
     expect(callback).toHaveBeenCalled();
   });
 });
-// check
+
+// ERROR: hay que hacer un mock o spy de signOut. Está hecho pero no lo estamos llamando bien?
 describe('logOut()', () => {
   it('debe ejecutar el método signOut', async () => {
     await logOut();

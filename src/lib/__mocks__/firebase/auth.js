@@ -9,3 +9,8 @@ export const signInWithEmailAndPassword = () => {
   console.log('estamos aqui en mock');
   return Promise.resolve();
 };
+
+// export const createUserWithEmailAndPassword = () => jest.fn();
+// export const getAuth = () => jest.fn();
+// export const GoogleAuthProvider = () => jest.fn();
+// export const initializeApp = () => jest.fn();
