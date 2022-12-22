@@ -16,33 +16,13 @@ export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 
 // CREAR USUARIO CON EMAIL
-export const createUser = (userMail, userPass, userName, onNavigate) => {
-  createUserWithEmailAndPassword(auth, userMail, userPass)
-    .then((userCredential) => {
-      console.log('bieen');
-      // Signed in
-      const user = userCredential.user;
-      onNavigate('/wall');
-      console.log(userCredential);
-      // ...
-      updateProfile(getAuth().currentUser, {
-        displayName: userName,
-      });
-    })
-
-    .catch((error) => {
-      console.log(error);
-      if (error.code === 'auth/email-already-in-use') {
-        document.getElementById('errorSpace').innerHTML = 'Éste correo ya está registrado';
-      } else if (error.code === 'auth/invalid-email') {
-        document.getElementById('errorSpace').innerHTML = 'El correo que ingresaste es inválido';
-      } else if (error.code === 'auth/weak-password') {
-        document.getElementById('errorSpace').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
-      } else if (error.code) {
-        document.getElementById('errorSpace').innerHTML = 'Revisa los datos ingresados, algo no está bien';
-      }
+// eslint-disable-next-line max-len
+export const createUser = (userMail, userPass, userName) => createUserWithEmailAndPassword(auth, userMail, userPass)
+  .then(() => {
+    updateProfile(getAuth().currentUser, {
+      displayName: userName,
     });
-};
+  });
 
 // INGRESAR CON USUARIO EXISTENTE
 export const signUp = (userMail, userPass, onNavigate) => {

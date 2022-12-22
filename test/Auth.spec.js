@@ -1,13 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import {
   signUp, signInGoogle, logOut, auth,
 } from '../src/lib/Auth.js';
-
-jest.mock('firebase/auth');
-jest.mock('firebase/firestore');
 
 // TEST PROVIDER
 
@@ -21,13 +18,20 @@ describe('auth()', () => {
 // TEST CREATEUSER
 
 // check, está usando los mocks?
-describe.only('signUp()', () => {
-  it('debe llamar al callback de ', async () => {
+describe('signUp()', () => {
+  it('debe llamar al callback', async () => {
     const testMail = 'falsomail@no.com';
     const testPass = '123';
     const callback = jest.fn();
     await signUp(testMail, testPass, callback);
     expect(callback).toHaveBeenCalled();
+  });
+  it ('debe llamar la funcion signInWithEmailAndPassword', () => {
+    const testMail = 'falsomail@no.com';
+    const testPass = '123';
+    const callback = jest.fn();
+    await signUp(testMail, testPass, callback);
+    expect(signInWithEmailAndPassword).toHaveBeenCalled();
   });
 });
 

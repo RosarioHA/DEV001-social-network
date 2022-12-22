@@ -35,7 +35,25 @@ export const Register = (onNavigate) => {
     const userMail = registerMail.value;
     const userPass = registerPass.value;
     const userName = registerName.value;
-    createUser(userMail, userPass, userName, onNavigate);
+    createUser(userMail, userPass, userName)
+      .then(() => {
+        // Signed in
+        onNavigate('/wall');
+        // ..
+      })
+      // sería ideal pasar éste .catch para el otro lado? revisar denuevo test-camp 22-12
+      .catch((error) => {
+        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          document.getElementById('errorSpace').innerHTML = 'Éste correo ya está registrado';
+        } else if (error.code === 'auth/invalid-email') {
+          document.getElementById('errorSpace').innerHTML = 'El correo que ingresaste es inválido';
+        } else if (error.code === 'auth/weak-password') {
+          document.getElementById('errorSpace').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
+        } else if (error.code) {
+          document.getElementById('errorSpace').innerHTML = 'Revisa los datos ingresados, algo no está bien';
+        }
+      });
   });
 
   homeDiv.append(

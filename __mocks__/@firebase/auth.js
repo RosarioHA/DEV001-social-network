@@ -5,10 +5,7 @@ export const getAuth = () => {};
 export const GoogleAuthProvider = class {}; // son un tipo de objeto que contiene funciones
 
 export const signOut = () => Promise.resolve();
-export const signInWithEmailAndPassword = () => {
-  console.log('estamos aqui en mock');
-  return Promise.resolve();
-};
+export const signInWithEmailAndPassword = jest.fn(() => Promise.resolve());
 
 // export const createUserWithEmailAndPassword = () => jest.fn();
 // export const getAuth = () => jest.fn();
