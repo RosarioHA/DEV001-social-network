@@ -20,8 +20,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       html += `
       <li class= 'post'>
         <div>
-        <p class='date'> ${objectoAccion}</p>
-        <p>${coment.userName}</p>
+        <h6 class='date'> ${objectoAccion}</h6>
+        <h5>${coment.userName}</h5>
          <h3>${coment.coment}</h3>
          <button class='btnEdit' data-id="${doc.id}"> Editar </button>
          <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>

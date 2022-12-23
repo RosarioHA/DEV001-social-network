@@ -9,6 +9,8 @@ import {
   doc,
   onSnapshot,
   updateDoc,
+  orderBy,
+  query,
 } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
@@ -38,7 +40,11 @@ export const saveComent = (coment, userName, date) => {
 
 export const getComent = () => getDocs(collection(db, 'coments'));
 
-export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), callback);
+// export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), callback);
+export const onGetComents = (querySnapshot) => {
+  const queryPost = query(collection(db, 'coments'), orderBy('date', 'desc'));
+  onSnapshot(queryPost, querySnapshot);
+};
 
 export const deleteComent = (id) => deleteDoc(doc(db, 'coments', id));
 
