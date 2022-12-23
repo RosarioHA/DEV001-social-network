@@ -94,6 +94,9 @@ input{
 .buttonLogout {
   width: 100px;
 }
+.btnHide{
+  display: none;
+}
 .btnDelete{
   width: 60px;
   background-color: #4C949C;

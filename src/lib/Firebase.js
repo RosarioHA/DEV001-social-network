@@ -34,8 +34,10 @@ export const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 
-export const saveComent = (coment, userName, date) => {
-  addDoc(collection(db, 'coments'), { coment, userName, date });
+export const saveComent = (coment, userName, date, uid) => {
+  addDoc(collection(db, 'coments'), {
+    coment, userName, date, uid,
+  });
 };
 
 export const getComent = () => getDocs(collection(db, 'coments'));

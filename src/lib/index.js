@@ -16,19 +16,35 @@ window.addEventListener('DOMContentLoaded', async () => {
       const coment = doc.data();
       const time = coment.date.seconds;
       const objectoAccion = new Date(time * 1000);
-      // las chicas arreglaron la fecha así https://github.com/Marlizethm/DEV001-social-network/blob/main/src/components/feed.js#L51-L57
-      html += `
-      <li class= 'post'>
-        <div>
-        <h6 class='date'> ${objectoAccion}</h6>
-        <h5>${coment.userName}</h5>
-         <h3>${coment.coment}</h3>
-         <button class='btnEdit' data-id="${doc.id}"> Editar </button>
-         <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
-        </div>
-      </li>  
-    `;
+      // if (si uid usuario = uid post) se muestra el botón  else (lo oculta)
+      if (coment.uid === currentUserInfo().uid) {
+        console.log('bieen');
+        html += `
+        <li class= 'post'>
+          <div>
+          <h6 class='date'> ${objectoAccion}</h6>
+          <h5>${coment.userName}</h5>
+           <h3>${coment.coment}</h3>
+           <section id='btns'>
+              <button class='btnEdit' data-id="${doc.id}"> Editar </button>
+              <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
+            </section> 
+          </div>
+        </li>  
+      `;
+      } else {
+        html += `
+        <li class= 'post'>
+          <div>
+          <h6 class='date'> ${objectoAccion}</h6>
+          <h5>${coment.userName}</h5>
+           <h3>${coment.coment}</h3>
+          </div>
+        </li>  
+      `;
+      }
     });
+
     comentSpace.innerHTML = html;
 
     const btnsDelete = comentSpace.querySelectorAll('.btnDelete');
@@ -57,9 +73,10 @@ comentArea.addEventListener('submit', (event) => {
 
   const coment = comentArea.comentImput;
   const date = new Date();
+  const uid = currentUserInfo().uid;
 
   if (!editStatus) {
-    saveComent(coment.value, currentUserInfo().displayName, date);
+    saveComent(coment.value, currentUserInfo().displayName, date, uid);
   } else {
     UpdatePost(id, {
       coment: coment.value,
