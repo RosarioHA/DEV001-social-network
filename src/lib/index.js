@@ -14,13 +14,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     querySnapshot.forEach((doc) => {
       const coment = doc.data();
-      const accion = Date.now();
-      const objectoAccion = new Date(accion);
-      const date = objectoAccion.toLocaleString();
+      const time = coment.date.seconds;
+      const objectoAccion = new Date(time * 1000);
+      // las chicas arreglaron la fecha así https://github.com/Marlizethm/DEV001-social-network/blob/main/src/components/feed.js#L51-L57
       html += `
       <li class= 'post'>
         <div>
-        <p class='date'> ${date}</p>
+        <p class='date'> ${objectoAccion}</p>
         <p>${coment.userName}</p>
          <h3>${coment.coment}</h3>
          <button class='btnEdit' data-id="${doc.id}"> Editar </button>
@@ -56,9 +56,10 @@ comentArea.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const coment = comentArea.comentImput;
+  const date = new Date();
 
   if (!editStatus) {
-    saveComent(coment.value, currentUserInfo().displayName);
+    saveComent(coment.value, currentUserInfo().displayName, date);
   } else {
     UpdatePost(id, {
       coment: coment.value,
