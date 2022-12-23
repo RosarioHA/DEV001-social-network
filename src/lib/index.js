@@ -14,9 +14,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     querySnapshot.forEach((doc) => {
       const coment = doc.data();
+      const accion = Date.now();
+      const objectoAccion = new Date(accion);
+      const date = objectoAccion.toLocaleString();
       html += `
       <li class= 'post'>
         <div>
+        <p class='date'> ${date}</p>
         <p>${coment.userName}</p>
          <h3>${coment.coment}</h3>
          <button class='btnEdit' data-id="${doc.id}"> Editar </button>
