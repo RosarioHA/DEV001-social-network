@@ -40,6 +40,7 @@ export const Register = (onNavigate) => {
       .then(() => {
         // Signed in
         onNavigate('/wall');
+        window.location.reload();
         // ..
       })
       // sería ideal pasar éste .catch para el otro lado? revisar denuevo test-camp 22-12

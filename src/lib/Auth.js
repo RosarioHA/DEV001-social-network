@@ -29,6 +29,7 @@ export const signUp = (userMail, userPass, onNavigate) => {
   signInWithEmailAndPassword(auth, userMail, userPass)
     .then((userCredential) => {
       onNavigate('/wall');
+      window.location.reload();
       // Signed in
       // const user = userCredential.user;
       console.log(userCredential);
@@ -52,6 +53,7 @@ export const signInGoogle = async (onNavigate) => {
     const credentials = await signInWithPopup(auth, provider);
     console.log('el tipo de dato es', typeof signInGoogle);
     onNavigate('/wall');
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }
