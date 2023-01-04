@@ -15,14 +15,12 @@ window.addEventListener('DOMContentLoaded', async () => {
     querySnapshot.forEach((doc) => {
       const coment = doc.data();
       const time = coment.date.seconds;
-      const objectoAccion = new Date(time * 1000);
-      // if (si uid usuario = uid post) se muestra el botón  else (lo oculta)
+      const date = new Date(time * 1000);
       if (coment.uid === currentUserInfo().uid) {
-        console.log('bieen');
         html += `
         <li class= 'post'>
           <div>
-          <h6 class='date'> ${objectoAccion}</h6>
+          <h6 class='date'> ${date}</h6>
           <h5>${coment.userName}</h5>
            <h3>${coment.coment}</h3>
            <section id='btns'>
@@ -36,7 +34,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         html += `
         <li class= 'post'>
           <div>
-          <h6 class='date'> ${objectoAccion}</h6>
+          <h6 class='date'> ${date}</h6>
           <h5>${coment.userName}</h5>
            <h3>${coment.coment}</h3>
           </div>

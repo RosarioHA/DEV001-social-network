@@ -42,7 +42,6 @@ export const saveComent = (coment, userName, date, uid) => {
 
 export const getComent = () => getDocs(collection(db, 'coments'));
 
-// export const onGetComents = (callback) => onSnapshot(collection(db, 'coments'), callback);
 export const onGetComents = (querySnapshot) => {
   const queryPost = query(collection(db, 'coments'), orderBy('date', 'desc'));
   onSnapshot(queryPost, querySnapshot);

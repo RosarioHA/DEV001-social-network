@@ -45,7 +45,6 @@ export const Register = (onNavigate) => {
       })
       // sería ideal pasar éste .catch para el otro lado? revisar denuevo test-camp 22-12
       .catch((error) => {
-        console.log(error);
         if (error.code === 'auth/email-already-in-use') {
           document.getElementById('errorSpace').innerHTML = 'Éste correo ya está registrado';
         } else if (error.code === 'auth/invalid-email') {
