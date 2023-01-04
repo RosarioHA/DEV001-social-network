@@ -17,19 +17,20 @@ Como primera Historia de Usuario, las personas necesitan crear un usuario para u
 ### Maqueta en Figma
 Escogimos una imagen de fondo llamativa y alusiva al tema, que aportara color y movimiento al diseño. La paleta de colores es alegre y atractiva, generando contraste sin ser demasiado estridente.
 
--- pantallazo primera maqueta figma colores amarillos --
+![Captura de pantalla 2023-01-04 a la(s) 3 23 21 p  m](https://user-images.githubusercontent.com/114428069/210623826-2465f834-78fb-4ac3-a21b-e62cf32278e2.png)
 
 Al testear nuestra primera maqueta de alta fidelidad con algunos usuarios, nos dimos cuenta de que el contraste entre los colores dificultaba la legibilidad para algunas personas, afectando la accesibilidad de nuestra aplicación. Decidimos mantener los mismos colores, pero combinarlos de manera de evitar contrastes conflictivos.
 
--- pantallazo cambio de colores -- 
+![Captura de pantalla 2023-01-04 a la(s) 3 25 06 p  m](https://user-images.githubusercontent.com/114428069/210623862-bb93cf39-bcf2-4316-a5ec-f5c92cb85a3d.png)
 
 También trabajamos en la responsividad de nuestra aplicación, adaptando el diseño para vista en móvil y también para escritorio.
 
--- pantallazo de la página para móvil y escritorio -- 
+![Captura de pantalla 2023-01-04 a la(s) 3 28 10 p  m](https://user-images.githubusercontent.com/114428069/210624487-90db7314-3018-4eb2-831e-52eee77a030a.png)
+![Captura de pantalla 2023-01-04 a la(s) 3 28 25 p  m](https://user-images.githubusercontent.com/114428069/210624496-5924ae43-d6c8-45e4-b8ee-205b116f45f4.png)
 
 ### Página desplegada
 
--- pantallazo del inicio de sesión --
+![Captura de pantalla 2023-01-04 a la(s) 3 30 02 p  m](https://user-images.githubusercontent.com/114428069/210624664-33b6b4ce-3a12-4d79-87fc-c6a7cd60628f.png)
 
 ## HU2
 En nuestra segunda Historia de Usuario, las personas quieren poder hacer comentarios en un muro, pudiendo compartir las semillas que tienen disponibles e intercambiar con otros huerteros de su zona. 
@@ -38,23 +39,20 @@ Para ésto implementamos una nueva vista ("wall") con un imput de texto y un bot
 ### Maqueta en Figma
 Para ésta vista decidimos prescindir de la imagen de fondo y utilizar un color liso; de ésta manera dirigimos la atención en los comentarios y alivianamos la información visual.
 
--- pantallazo maqueta --
+![Captura de pantalla 2023-01-04 a la(s) 3 31 31 p  m](https://user-images.githubusercontent.com/114428069/210624912-0155f0e3-e274-498d-9e3e-815ac1e386f2.png)
 
 ### Página desplegada
 
--- pantallazo del muro --
+![Captura de pantalla 2023-01-04 a la(s) 3 43 40 p  m](https://user-images.githubusercontent.com/114428069/210626885-5f6c73ec-3c2d-4c61-b8e6-9d48063bc822.png)
 
 ## HU3
 Para nuestra tercera Historia de Usuario, las personas necesitan tener la opción de editar o eliminar sus comentarios en el muro. Para ésto sumamos a cada uno de los comentarios un botón de editar y otro de eliminar, los cuales sólo serán visibles para los autores de cada uno de los post.
 
-### Maqueta en Figma
-Mantuvimos la paleta de colores, buscando alto contraste en los botones para facilitar su legibilidad.
-
--- pantallazo maqueta --
 
 ### Página desplegada
+Mantuvimos la paleta de colores, buscando alto contraste en los botones para facilitar su legibilidad.
 
--- pantallazo del muro con sus botones --
+![Captura de pantalla 2023-01-04 a la(s) 3 47 37 p  m](https://user-images.githubusercontent.com/114428069/210627535-3f76a221-f551-46f8-b12e-914de80d0f19.png) 
 
 ## Enlace
 Para visitar el resultado final de nuestro proyecto de Social-Network puedes visitar el siguiente enlace:
