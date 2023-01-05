@@ -30,7 +30,7 @@ export const signUp = (userMail, userPass) => signInWithEmailAndPassword(auth, u
 // INGRESAR CON GOOGLE - check
 export const signInGoogle = async (onNavigate) => {
   try {
-    const credentials = await signInWithPopup(auth, provider);
+    await signInWithPopup(auth, provider);
     onNavigate('/wall');
   } catch (error) {
     console.log(error);

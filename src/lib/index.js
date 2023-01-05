@@ -3,8 +3,8 @@ import {
 } from './Firebase.js';
 import { currentUserInfo } from './Auth.js';
 
-const comentArea = document.getElementById('comentArea');
 const comentSpace = document.getElementById('comentSpace');
+const comentArea = document.getElementById('comentArea');
 let editStatus = false;
 let id = '';
 
@@ -79,9 +79,7 @@ comentArea.addEventListener('submit', (event) => {
     UpdatePost(id, {
       coment: coment.value,
     });
-
     editStatus = false;
   }
-
   comentArea.reset();
 });
