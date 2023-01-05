@@ -46,7 +46,23 @@ export const Login = (onNavigate) => {
   buttonLogin.addEventListener('click', () => {
     const userMail = loginMail.value;
     const userPass = loginPass.value;
-    signUp(userMail, userPass, onNavigate);
+    signUp(userMail, userPass)
+      .then(() => {
+        onNavigate('/wall');
+        // window.location.reload();
+        // Signed in
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          document.getElementById('errorLogin').innerHTML = 'Este correo ya está registrado';
+        } else if (error.code === 'auth/invalid-email') {
+          document.getElementById('errorLogin').innerHTML = 'El correo que ingresaste es inválido';
+        } else if (error.code === 'auth/weak-password') {
+          document.getElementById('errorLogin').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
+        } else if (error.code) {
+          document.getElementById('errorLogin').innerHTML = 'Revisa los datos ingresados, algo no está bien';
+        }
+      });
   });
 
   loginDiv.append(

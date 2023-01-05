@@ -25,35 +25,13 @@ export const createUser = (userMail, userPass, userName) => createUserWithEmailA
   });
 
 // INGRESAR CON USUARIO EXISTENTE
-export const signUp = (userMail, userPass, onNavigate) => {
-  signInWithEmailAndPassword(auth, userMail, userPass)
-    .then((userCredential) => {
-      onNavigate('/wall');
-      window.location.reload();
-      // Signed in
-      // const user = userCredential.user;
-      console.log(userCredential);
-    })
-    .catch((error) => {
-      if (error.code === 'auth/email-already-in-use') {
-        document.getElementById('errorLogin').innerHTML = 'Este correo ya está registrado';
-      } else if (error.code === 'auth/invalid-email') {
-        document.getElementById('errorLogin').innerHTML = 'El correo que ingresaste es inválido';
-      } else if (error.code === 'auth/weak-password') {
-        document.getElementById('errorLogin').innerHTML = 'Tu clave tiene que tener un mínimo de seis dígitos';
-      } else if (error.code) {
-        document.getElementById('errorLogin').innerHTML = 'Revisa los datos ingresados, algo no está bien';
-      }
-    });
-};
+export const signUp = (userMail, userPass) => signInWithEmailAndPassword(auth, userMail, userPass);
 
 // INGRESAR CON GOOGLE - check
 export const signInGoogle = async (onNavigate) => {
   try {
     const credentials = await signInWithPopup(auth, provider);
-    console.log('el tipo de dato es', typeof signInGoogle);
     onNavigate('/wall');
-    window.location.reload();
   } catch (error) {
     console.log(error);
   }

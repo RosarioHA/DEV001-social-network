@@ -40,10 +40,7 @@ export const Register = (onNavigate) => {
       .then(() => {
         // Signed in
         onNavigate('/wall');
-        window.location.reload();
-        // ..
       })
-      // sería ideal pasar éste .catch para el otro lado? revisar denuevo test-camp 22-12
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
           document.getElementById('errorSpace').innerHTML = 'Éste correo ya está registrado';
