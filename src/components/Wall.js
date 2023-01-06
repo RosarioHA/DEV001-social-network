@@ -1,11 +1,21 @@
-import { logOut } from '../lib/Auth';
+import { currentUserInfo, logOut } from '../lib/Auth';
+import {
+  deleteComent,
+  getPost,
+  onGetComents,
+  saveComent,
+  UpdatePost,
+} from '../lib/Firebase';
 
 export const Wall = (onNavigate) => {
+  let editStatus = false;
+  let id = '';
+
   const wallDiv = document.createElement('div');
   wallDiv.className = 'wall';
 
-  const comentArea = document.createElement('form');
-  comentArea.id = 'comentArea';
+  const comentAreaEl = document.createElement('form');
+  comentAreaEl.id = 'comentArea';
 
   const comentImput = document.createElement('textarea');
   comentImput.id = 'comentImput';
@@ -15,10 +25,9 @@ export const Wall = (onNavigate) => {
   buttonLogout.textContent = 'cerrar sesión';
   buttonLogout.id = 'btnLogout';
   buttonLogout.addEventListener('click', () => {
-    comentArea.reset();
+    comentAreaEl.reset();
     logOut();
     onNavigate('/');
-    window.location.reload();
   });
 
   const menu = document.createElement('div');
@@ -28,12 +37,85 @@ export const Wall = (onNavigate) => {
   buttonComent.className = 'buttonComent';
   buttonComent.textContent = 'PUBLICAR';
 
-  const comentSpace = document.createElement('ul');
-  comentSpace.id = 'comentSpace';
+  const comentSpaceEl = document.createElement('ul');
+  comentSpaceEl.id = 'comentSpace';
 
-  wallDiv.append(menu, comentArea, comentSpace);
-  comentArea.append(comentImput, buttonComent);
+  wallDiv.append(menu, comentAreaEl, comentSpaceEl);
+  comentAreaEl.append(comentImput, buttonComent);
   menu.append(buttonLogout);
+
+  onGetComents((querySnapshot) => {
+    let html = '';
+
+    querySnapshot.forEach((doc) => {
+      const coment = doc.data();
+      const time = coment.date.seconds;
+      const date = new Date(time * 1000);
+      if (coment.uid === currentUserInfo().uid) {
+        html += `
+        <li class= 'post'>
+          <div>
+          <h6 class='date'> ${date}</h6>
+          <h5>${coment.userName}</h5>
+           <h3>${coment.coment}</h3>
+           <section id='btns'>
+              <button class='btnEdit' data-id="${doc.id}"> Editar </button>
+              <button class='btnDelete' data-id="${doc.id}"> Eliminar </button>
+            </section> 
+          </div>
+        </li>  
+      `;
+      } else {
+        html += `
+        <li class= 'post'>
+          <div>
+          <h6 class='date'> ${date}</h6>
+          <h5>${coment.userName}</h5>
+           <h3>${coment.coment}</h3>
+          </div>
+        </li>  
+      `;
+      }
+    });
+    comentSpaceEl.innerHTML = html;
+
+    const btnsDelete = comentSpaceEl.querySelectorAll('.btnDelete');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deleteComent(dataset.id);
+      });
+    });
+
+    const btnsEdit = comentSpaceEl.querySelectorAll('.btnEdit');
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener('click', async ({ target: { dataset } }) => {
+        const doc = await getPost(dataset.id);
+        const post = doc.data();
+        comentAreaEl.comentImput.value = post.coment;
+
+        editStatus = true;
+        id = doc.id;
+      });
+    });
+  });
+
+  comentAreaEl.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const coment = comentAreaEl.comentImput;
+    const date = new Date();
+    const uid = currentUserInfo().uid;
+
+    if (!editStatus) {
+      saveComent(coment.value, currentUserInfo().displayName, date, uid);
+    } else {
+      UpdatePost(id, {
+        coment: coment.value,
+      });
+      editStatus = false;
+    }
+    comentAreaEl.reset();
+  });
 
   return wallDiv;
 };
