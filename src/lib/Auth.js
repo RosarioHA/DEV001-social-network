@@ -27,7 +27,7 @@ export const createUser = (userMail, userPass, userName) => createUserWithEmailA
 // INGRESAR CON USUARIO EXISTENTE
 export const signUp = (userMail, userPass) => signInWithEmailAndPassword(auth, userMail, userPass);
 
-// INGRESAR CON GOOGLE - check
+// INGRESAR CON GOOGLE
 export const signInGoogle = async (onNavigate) => {
   try {
     await signInWithPopup(auth, provider);
@@ -37,10 +37,10 @@ export const signInGoogle = async (onNavigate) => {
   }
 };
 
-// FUNCIÓN DE SIGNOUT - check
+// FUNCIÓN DE SIGNOUT
 export const logOut = async () => {
   await signOut(auth);
 };
 
-// funcion currentuser
+// FUNCION DE CURRENTUSERINFO
 export const currentUserInfo = () => auth.currentUser;

@@ -51,4 +51,4 @@ export const deleteComent = (id) => deleteDoc(doc(db, 'coments', id));
 
 export const getPost = (id) => getDoc(doc(db, 'coments', id));
 
-export const UpdatePost = (id, newFields) => updateDoc(doc(db, 'coments', id), newFields);
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'coments', id), newFields);

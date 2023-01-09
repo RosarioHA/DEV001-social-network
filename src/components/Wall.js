@@ -4,7 +4,7 @@ import {
   getPost,
   onGetComents,
   saveComent,
-  UpdatePost,
+  updatePost,
 } from '../lib/Firebase';
 
 export const Wall = (onNavigate) => {
@@ -109,7 +109,7 @@ export const Wall = (onNavigate) => {
     if (!editStatus) {
       saveComent(coment.value, currentUserInfo().displayName, date, uid);
     } else {
-      UpdatePost(id, {
+      updatePost(id, {
         coment: coment.value,
       });
       editStatus = false;
