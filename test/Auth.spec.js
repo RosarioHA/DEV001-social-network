@@ -5,26 +5,20 @@ import {
   addDoc, collection, getDocs, deleteDoc, onSnapshot, doc, getDoc, updateDoc, query, orderBy,
 } from 'firebase/firestore';
 import {
-  getAuth,
-  GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
-  updateProfile,
 } from 'firebase/auth';
 // import { createUserWithEmailAndPassword } from '../__mocks__/@firebase/auth.js';
 import {
   createUser, signUp, signInGoogle, logOut, currentUserInfo,
 } from '../src/lib/Auth.js';
 import {
-  app, db, saveComent, getComent, onGetComents, deleteComent, getPost, updatePost,
+  db, saveComent, getComent, onGetComents, deleteComent, getPost, updatePost,
 } from '../src/lib/Firebase.js';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
-// jest.mock('../src/lib/Auth.js');
-// jest.mock('../src/lib/Firebase.js');
 
 // TEST AUTH.JS
 // test createUser - dejar como issue para proximo proyecto
@@ -32,16 +26,6 @@ describe('createUser', () => {
   it('debería ser  una función', () => {
     expect(typeof createUser).toBe('function');
   });
-  // it('debería ejecutar la función createUserWithEmailAndPassword', () => {
-  //   createUserWithEmailAndPassword.mockImplementation(() => {
-  //     Promise.resolve({
-  //       email: 'testmail@mail.com',
-  //       password: '654321',
-  //     });
-  //   });
-  //   createUser(createUserWithEmailAndPassword);
-  //   expect(createUserWithEmailAndPassword).toBeCalled();
-  // });
   it('debería ejecutar la función createUserWithEmailAndPassword', () => {
     const email = 'testmail@mail.com';
     const password = '654321';
@@ -49,13 +33,6 @@ describe('createUser', () => {
     createUser(email, password, name);
     expect(createUserWithEmailAndPassword).toHaveBeenCalled();
   });
-  // it('Deberia retornar un objeto con las propiedades email y password', () => {
-  //   createUser('testmail@mail.com', '654321');
-  //   expect({
-  //     email: 'testmail@mail.com',
-  //     password: '654321',
-  //   }).toEqual(expect.anything());
-  // });
 });
 
 // test signUp - CHECK
