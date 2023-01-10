@@ -23,8 +23,8 @@ import {
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
-jest.mock('../src/lib/Auth.js');
-jest.mock('../src/lib/Firebase.js');
+// jest.mock('../src/lib/Auth.js');
+// jest.mock('../src/lib/Firebase.js');
 
 // TEST AUTH.JS
 // test createUser
@@ -64,21 +64,16 @@ describe('signUp', () => {
   it('debería ejecutar la función sigInWithEmailAndPassword()', async () => {
     const email = 'testmail@mail.com';
     const password = '654321';
-    const signInTest = jest.fn();
     signUp(email, password);
-    await expect(signInTest).resolves.toHaveBeenCalled();
+    await expect(signInWithEmailAndPassword).toHaveBeenCalled();
   });
 });
 
-// test signInGoogle
+// test signInGoogle - CHECK
 describe('signInGoogle', () => {
   it('debería ser  una función', () => {
     expect(typeof signInGoogle).toBe('function');
   });
-  // it('debería ejecutar la función signInWithPopup()', () => {
-  //   const auth = jest.fn();
-  //   const provider = jest.fn();
-  //   expect(signInGoogle(auth, provider)).resolves.toBeUndefined();
 });
 it('debería ejecutar la función signInWithPopup', async () => {
   const onNavigate = jest.fn();
@@ -105,10 +100,6 @@ describe('logOut', () => {
 describe('currentUserInfo', () => {
   it('debería ser  una función', () => {
     expect(typeof currentUserInfo).toBe('function');
-  });
-  it('debería ejecutar la función auth', () => {
-    const auth = jest.fn();
-    expect(auth).toHaveBeenCalled();
   });
 });
 
