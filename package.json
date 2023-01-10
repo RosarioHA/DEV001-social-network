@@ -21,7 +21,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "./deploy.sh",
-    "testing": "jest -- watch --coverage"
+    "testing": "jest --coverage"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",

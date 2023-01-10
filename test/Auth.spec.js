@@ -27,36 +27,38 @@ jest.mock('firebase/firestore');
 // jest.mock('../src/lib/Firebase.js');
 
 // TEST AUTH.JS
-// test createUser
+// test createUser - dejar como issue para proximo proyecto
 describe('createUser', () => {
   it('debería ser  una función', () => {
     expect(typeof createUser).toBe('function');
   });
-  it('debería ejecutar la función createUserWithEmailAndPassword', () => {
-    createUserWithEmailAndPassword.mockImplementation(() => {
-      Promise.resolve({
-        email: 'testmail@mail.com',
-        password: '654321',
-      });
-    });
-    createUser(createUserWithEmailAndPassword);
-    expect(createUserWithEmailAndPassword).toBeCalled();
-  });
-  // it('debería ejecutar la función createUserWithEmailAndPassword', async () => {
-  //   const email = 'testmail@mail.com';
-  //   const password = '654321';
-  //   await expect(createUser(email, password)).resolves.toBeUndefined();
+  // it('debería ejecutar la función createUserWithEmailAndPassword', () => {
+  //   createUserWithEmailAndPassword.mockImplementation(() => {
+  //     Promise.resolve({
+  //       email: 'testmail@mail.com',
+  //       password: '654321',
+  //     });
+  //   });
+  //   createUser(createUserWithEmailAndPassword);
+  //   expect(createUserWithEmailAndPassword).toBeCalled();
   // });
-  it('Deberia retornar un objeto con las propiedades email y password', () => {
-    createUser('testmail@mail.com', '654321');
-    expect({
-      email: 'testmail@mail.com',
-      password: '654321',
-    }).toEqual(expect.anything());
+  it('debería ejecutar la función createUserWithEmailAndPassword', () => {
+    const email = 'testmail@mail.com';
+    const password = '654321';
+    const name = 'Name';
+    createUser(email, password, name);
+    expect(createUserWithEmailAndPassword).toHaveBeenCalled();
   });
+  // it('Deberia retornar un objeto con las propiedades email y password', () => {
+  //   createUser('testmail@mail.com', '654321');
+  //   expect({
+  //     email: 'testmail@mail.com',
+  //     password: '654321',
+  //   }).toEqual(expect.anything());
+  // });
 });
 
-// test signUp
+// test signUp - CHECK
 describe('signUp', () => {
   it('debería ser una función', () => {
     expect(typeof signUp).toBe('function');
@@ -96,7 +98,7 @@ describe('logOut', () => {
   });
 });
 
-// test currentUserInfo
+// test currentUserInfo - CHECK
 describe('currentUserInfo', () => {
   it('debería ser  una función', () => {
     expect(typeof currentUserInfo).toBe('function');
