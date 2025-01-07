@@ -54,6 +54,3 @@ Mantuvimos la paleta de colores, buscando alto contraste en los botones para fac
 
 ![Captura de pantalla 2023-01-04 a la(s) 3 47 37 p  m](https://user-images.githubusercontent.com/114428069/210627535-3f76a221-f551-46f8-b12e-914de80d0f19.png) 
 
-## Enlace
-Para visitar el resultado final de nuestro proyecto de Social-Network puedes visitar el siguiente enlace:
--- el enlace -- 
